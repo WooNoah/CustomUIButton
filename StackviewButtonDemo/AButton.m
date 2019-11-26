@@ -70,22 +70,21 @@
 //    [self.titleLabel sizeToFit];
     
     
+    [self.imageView removeConstraints:self.imageView.constraints];
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        //1
-        CGFloat topMargin = 0;
+        //1 这是系统给的四个约束，想要调整，需要给原有的约束添加新的值
         make.centerX.equalTo(self);
-        make.top.equalTo(self).offset(topMargin);
-        make.bottom.equalTo(self.mas_top).offset(20 + topMargin);
-        make.width.equalTo(@20);
+        make.centerY.equalTo(self).offset(-10);
+        make.width.equalTo(@(self.imageView.image.size.width));
+        make.height.equalTo(@(self.imageView.image.size.height));
         
         //2
 //        make.top.equalTo(self).offset(10);
 //        make.bottom.equalTo(self).offset(-60);
 //        make.left.equalTo(self).offset(20);
 //        make.right.equalTo(self).offset(-50);
-        
-        
-//          //这里通过设置size无效？，如果设置了size，则要和[self.imageView sizeToFit]结合使用，要不然imageView的宽度会变为0
+                
+//          //这里通过设置size是无效的，只能设置width/height
 //        make.size.mas_equalTo(self.imageView.image.size);
     }];
     
