@@ -9,7 +9,7 @@
 #import "AButton.h"
 #import <Masonry.h>
 
-#define toggleSwitch 0
+#define toggleSwitch 1
 
 @implementation AButton
 
@@ -58,6 +58,14 @@
     
 #if toggleSwitch
     //Part ①
+    
+    /*
+     这里有一种情况，如果图片过大，使用part ①这种方法修改，会造成titleLabel宽度为0
+     使用sizeToFit方法才能正常显示
+     */
+//    [self.imageView sizeToFit];
+//    [self.titleLabel sizeToFit];
+    
     self.imageView.frame = CGRectMake((self.frame.size.width - self.imageView.frame.size.width)/2, 5, self.imageView.image.size.width, self.imageView.image.size.height);
     self.titleLabel.frame = CGRectMake((self.frame.size.width - self.titleLabel.frame.size.width)/2, self.frame.size.height - 5 - self.titleLabel.frame.size.height, self.titleLabel.frame.size.width, self.titleLabel.frame.size.height);
     
